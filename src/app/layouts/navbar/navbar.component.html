@@ -1,0 +1,68 @@
+<nav
+  class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600"
+>
+  <div
+    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <a
+      routerLink="/dashboard"
+      class="flex items-center space-x-3 rtl:space-x-reverse"
+    >
+      <span
+        class="self-center text-lg font-bold whitespace-nowrap text-black"
+        >{{ appName }}</span
+      >
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <p-button
+        (click)="visible = true"
+        severity="secondary"
+        icon="pi pi-bars"
+      />
+    </div>
+  </div>
+</nav>
+
+<p-drawer #drawerRef [(visible)]="visible">
+  <ng-template #headless>
+    <div class="flex flex-col h-full">
+      <div class="flex items-center justify-between px-6 pt-4 shrink-0">
+        <span class="inline-flex items-center gap-2">
+          <span class="font-bold text-lg">{{ appName }}</span>
+        </span>
+        <span>
+          <p-button
+            type="button"
+            (click)="closeCallback($event)"
+            icon="pi pi-times"
+            rounded="true"
+            outlined="true"
+            styleClass="h-8 w-8"
+          ></p-button>
+        </span>
+      </div>
+      <div class="overflow-y-auto">
+        <ul class="list-none px-2 py-4 m-0">
+          <li>
+            <a
+              routerLink="/dashboard"
+              pRipple
+              class="flex items-center cursor-pointer px-4 py-2 rounded-border text-surface-700 hover:text-primary-700 duration-150 transition-colors p-ripple"
+            >
+              <span class="font-medium">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/users"
+              pRipple
+              class="flex items-center cursor-pointer px-4 py-2 rounded-border text-surface-700 hover:text-primary-700 duration-150 transition-colors p-ripple"
+            >
+              <span class="font-medium">Users</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </ng-template>
+</p-drawer>
