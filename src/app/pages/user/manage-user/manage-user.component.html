@@ -1,0 +1,74 @@
+<app-container [pageTitle]="pageTitle">
+  <p-card>
+    <p-table
+      #dt
+      dataKey="id"
+      [value]="users"
+      [loading]="loading"
+      [paginator]="true"
+      [rows]="10"
+      [rowHover]="true"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [globalFilterFields]="['name', 'email', 'phone', 'address']"
+    >
+      <ng-template #caption>
+        <div class="flex flex-col sm:flex-row justify-between">
+          <p-iconfield iconPosition="left">
+            <p-inputicon>
+              <i class="pi pi-search"></i>
+            </p-inputicon>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal($event.target.value, 'contains')"
+              placeholder="Search keyword"
+            />
+          </p-iconfield>
+          <p-button
+            routerLink="/users/create"
+            label="Add User"
+            icon="pi pi-plus"
+          />
+        </div>
+      </ng-template>
+      <ng-template #header>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Created On</th>
+          <th>Action</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-user>
+        <tr>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.createdAt | date }}</td>
+          <td>
+            <p-button
+              icon="pi pi-pencil"
+              class="mr-2"
+              severity="success"
+              [rounded]="true"
+              [outlined]="true"
+              (click)="editUser(user.id)"
+            />
+            <p-button
+              icon="pi pi-trash"
+              severity="danger"
+              [rounded]="true"
+              [outlined]="true"
+              (click)="deleteUser($event, user.id)"
+            />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</app-container>
+
+<p-toast />
+<p-confirmdialog />
