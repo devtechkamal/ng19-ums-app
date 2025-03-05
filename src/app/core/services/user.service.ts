@@ -29,7 +29,7 @@ export class UserService {
   }
 
   updateUser(id: number, user: User): Observable<ApiResponse<User>> {
-    return this.http.post<ApiResponse<User>>(
+    return this.http.put<ApiResponse<User>>(
       `${ApiEndpoint.UserEndpoint}/${id}`,
       user
     );
