@@ -6,8 +6,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { Menu } from 'primeng/menu';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
-import { PrimaryBtnComponent } from './components/primary-btn/primary-btn.component';
-import { SecondaryBtnComponent } from './components/secondary-btn/secondary-btn.component';
 import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { IconFieldModule } from 'primeng/iconfield';
@@ -33,8 +31,6 @@ const MODULES = [
   ButtonModule,
   Menu,
   BreadcrumbModule,
-  PrimaryBtnComponent,
-  SecondaryBtnComponent,
   TableModule,
   RatingModule,
   IconFieldModule,
